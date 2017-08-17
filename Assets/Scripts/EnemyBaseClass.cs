@@ -4,27 +4,47 @@ using UnityEngine;
 [RequireComponent(typeof(DisplaySprite))]
 public abstract class EnemyBaseClass : MonoBehaviour
 {
-    public float AttackDamage;
+    public int AttackDamage;
+    public int DamageRange = 2;
     public float AttackCoolDown;
-    public float MoralModifier;
-    public int Health;
+    public int MoraleModifier;
+    public int MaxHealth;
+    public int currentHealth;
+
     protected DisplaySprite Sprites;
+
     public virtual void Start()
     {
+        currentHealth = MaxHealth;
         Sprites = GetComponent<DisplaySprite>();
     }
 
-    public virtual void AttackSequence()
+    public virtual void StartEnemyAttack()
     {
-        
+        InvokeRepeating("AttackSequence",AttackCoolDown,AttackCoolDown);
+    }
+    private void AttackSequence()
+    {
+        CombatController.instance.DealDamageToPlayer(Random.Range( AttackDamage -DamageRange , AttackDamage +DamageRange ));
+    }
+
+    public void EndCombat()
+    {
+        CancelInvoke();
     }
     public virtual void TakeDamage(int _damage)
     {
-        StartCoroutine(TakeDamageSequence(_damage));
-    }
-    private IEnumerator TakeDamageSequence(int _damage)
-    {
+        currentHealth -= _damage;
 
-        yield return new WaitForSeconds(0.2f);
+        Sprites.DecreaseBar((float)currentHealth / MaxHealth);
+        if (currentHealth <=0 )
+        {
+            CombatController.instance.EndCombat(true);
+        }
+    }
+   public void ResetHP()
+    {
+        currentHealth = MaxHealth;
+        Sprites.DecreaseBar(1);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 
 public class DisplaySprite : MonoBehaviour {
     public SpriteRenderer MyDisplayImage;
@@ -17,4 +17,21 @@ public class DisplaySprite : MonoBehaviour {
     {
 		
 	}
+
+    public void DecreaseBar(float newFill)
+    {
+        StopAllCoroutines();
+        DOTween.Kill(gameObject);
+
+        StartCoroutine(DecreaseHealthBar(newFill));
+    }
+
+    private IEnumerator DecreaseHealthBar(float _newFill)
+    {
+
+        MyHealthBar.DOFillAmount(_newFill , 0.15f);
+        yield return new WaitForSeconds(0.1f);
+        MyHealthBarShadow.DOFillAmount(_newFill, 0.15f);
+
+    }
 }
