@@ -15,7 +15,7 @@ public class CombatController : MonoBehaviour
     public void StartFight()
     {
         Debug.Log("Attack sequence started");
-        float attackTime = PlayerCombat.Instance.BaseAttackSpeed - (PlayerCombat.Instance.Agility / 1000);
+        float attackTime = PlayerCombat.Instance.BaseAttackSpeed - (PlayerCombat.Instance.Agility / 150);
         int StartingMorale = PlayerCombat.Instance.Courage - CurrentEnemy.MoraleModifier;
         PlayerCombat.Instance.SetStartingMorale(StartingMorale);
         CurrentEnemy.StartEnemyAttack();
