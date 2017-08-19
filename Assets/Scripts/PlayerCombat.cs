@@ -13,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
     public float Agility=5;// attack speed modifier + dodge chance
     public int StartingMorale;//current HP based on courage
     public int CurrenMorale;
+    
     public static PlayerCombat Instance;
     private DisplaySprite Sprites;
 
@@ -28,6 +29,7 @@ public class PlayerCombat : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(this);
         Sprites = GetComponent<DisplaySprite>();
 	}
     public void PlayerStartCombat(float _time)
@@ -40,14 +42,22 @@ public class PlayerCombat : MonoBehaviour
     }
     public void SetStartingMorale(int _Morale)
     {
+        //need to display starting moral compared to max morale without the modifier
         StartingMorale = _Morale;
         CurrenMorale = StartingMorale;
-        Sprites.DecreaseBar((float)CurrenMorale / StartingMorale);
+
+        // startingMorale / courage should give me the % that starting morale is of the max
+        float difference =  1-(StartingMorale / Courage);
+        Debug.Log(difference);
+        Sprites.DecreaseBar(((float)CurrenMorale / (float)StartingMorale)-difference);
     }
     public void takeDamage(int _damage)
     {
         CurrenMorale -= _damage;
-        Sprites.DecreaseBar((float)CurrenMorale / StartingMorale);
+        float difference = 1- (StartingMorale / Courage);
+        
+        Debug.Log((CurrenMorale / StartingMorale) - difference);
+        Sprites.DecreaseBar((float)(CurrenMorale / StartingMorale)-difference);
         if (CurrenMorale <=0 )
         {
             CombatController.instance.EndCombat(false);

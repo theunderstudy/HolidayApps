@@ -20,6 +20,7 @@ public class DisplaySprite : MonoBehaviour {
 
     public void DecreaseBar(float newFill)
     {
+
         StopAllCoroutines();
         DOTween.Kill(gameObject);
 
