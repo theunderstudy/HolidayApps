@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        DontDestroyOnLoad(gameObject);
         mycollider = GetComponent<Collider>();
 
     }
@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour
     }
 
     //Switch to training rooms
-    public void SwitchTrainingRoom()
+    public void SwitchScene(int roomIndex)
     {
-
+        SceneManager.LoadScene(roomIndex);
     }
 }

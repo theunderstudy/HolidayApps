@@ -31,6 +31,14 @@ public class PlayerCombat : MonoBehaviour
         }
         DontDestroyOnLoad(this);
         Sprites = GetComponent<DisplaySprite>();
+
+        if (PlayerPrefs.HasKey("str"))
+        {
+            Strength = PlayerPrefs.GetInt("str");
+            Agility = PlayerPrefs.GetFloat("agi");
+            Cunning = PlayerPrefs.GetFloat("cunning");
+            Courage = PlayerPrefs.GetInt("Courage");
+        }
 	}
     public void PlayerStartCombat(float _time)
     {
@@ -82,8 +90,11 @@ public class PlayerCombat : MonoBehaviour
         Dogo.transform.localPosition = position;
     }
 
-    void Update ()
+    private void OnDestroy()
     {
-		
-	}
+        PlayerPrefs.SetInt("str", Strength);
+        PlayerPrefs.SetFloat("agi", Agility);
+        PlayerPrefs.SetFloat("cunning", Cunning);
+        PlayerPrefs.SetInt("courage", Courage);
+    }
 }

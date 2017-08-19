@@ -98,8 +98,12 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GardenShed.cs" />
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
+    <Compile Include="Assets\Scripts\PlayerStatsUI.cs" />
     <Compile Include="Assets\Scripts\Rat.cs" />
+    <Compile Include="Assets\Scripts\SceneSwitcher.cs" />
     <Compile Include="Assets\Scripts\TrainingScripts\AGITrainingScene.cs" />
+    <Compile Include="Assets\Scripts\TrainingScripts\TrainingStatStorage.cs" />
+    <Compile Include="Assets\Scripts\TrainingScripts\TrainingTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Backyard - Free\Readme.txt" />
@@ -111,6 +115,7 @@
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\Fantasy Environment and Animated Characters (Pixel Art) [free add-on]\Graphical\Characters\Characters Sizes to Slice.txt" />
     <None Include="Assets\Fantasy Environment and Animated Characters (Pixel Art) [free add-on]\Readme.txt" />
+    <None Include="Assets\Fonts\License.txt" />
     <None Include="Assets\stub.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

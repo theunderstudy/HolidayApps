@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4086878899541614}
   - component: {fileID: 114633447232868738}
   - component: {fileID: 114632500859641322}
+  - component: {fileID: 114552326117471030}
+  - component: {fileID: 114933463623874012}
+  - component: {fileID: 114537082428896364}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -41,6 +44,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114537082428896364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136250968922670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0842a5c6a01ad4fa850327993255cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyDisplayImage: {fileID: 0}
+  MyHealthBar: {fileID: 0}
+  MyHealthBarShadow: {fileID: 0}
+--- !u!114 &114552326117471030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136250968922670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac7cf8fb1e0c1349840020771846077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StrTraining: 0
+  AgiTraining: 0
+  CritTraining: 0
 --- !u!114 &114632500859641322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53,6 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentEnemy: {fileID: 0}
+  EnemyStack: []
+  FightIndex: 0
 --- !u!114 &114633447232868738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,3 +99,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   temp: 0
   mycollider: {fileID: 0}
+--- !u!114 &114933463623874012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136250968922670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec59cc4f24ded248b4173d55752b697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cunning: 5
+  Courage: 50
+  Strength: 15
+  StrengthRange: 2
+  BaseAttackSpeed: 1
+  Agility: 5
+  StartingMorale: 50
+  CurrenMorale: 50
+  Dogo: {fileID: 0}
