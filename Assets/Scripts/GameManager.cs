@@ -43,4 +43,10 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
+
+    //Switch to training rooms
+    public void SwitchTrainingRoom()
+    {
+
+    }
 }

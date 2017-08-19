@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\GardenShed.cs" />
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\Rat.cs" />
+    <Compile Include="Assets\Scripts\TrainingScripts\AGITrainingScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Backyard - Free\Readme.txt" />
