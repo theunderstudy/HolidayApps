@@ -35,10 +35,11 @@ public class PlayerCombat : MonoBehaviour
 
         if (PlayerPrefs.HasKey("str"))
         {
-            Strength = PlayerPrefs.GetInt("str");
-            Agility = PlayerPrefs.GetFloat("agi");
-            Cunning = PlayerPrefs.GetFloat("cunning");
-            Courage = PlayerPrefs.GetInt("Courage");
+            PlayerPrefs.DeleteAll();
+            //Strength = PlayerPrefs.GetInt("str");
+            //Agility = PlayerPrefs.GetFloat("agi");
+            //Cunning = PlayerPrefs.GetFloat("cunning");
+            //Courage = PlayerPrefs.GetInt("Courage");
         }
     }
     public void PlayerStartCombat(float _time, EnemyBaseClass _currentEnemy)
@@ -57,17 +58,17 @@ public class PlayerCombat : MonoBehaviour
         CurrenMorale = StartingMorale;
 
         // startingMorale / courage should give me the % that starting morale is of the max
-        float difference = 1 - (StartingMorale / Courage);
+        float difference = 1 - ((float)StartingMorale / Courage);
         Debug.Log(difference);
         Sprites.DecreaseBar(((float)CurrenMorale / (float)StartingMorale) - difference);
     }
     public void takeDamage(int _damage)
     {
         CurrenMorale -= _damage;
-        float difference = 1 - (StartingMorale / Courage);
+        float difference = 1 - ((float)StartingMorale / Courage);
 
-        Debug.Log((CurrenMorale / StartingMorale) - difference);
-        Sprites.DecreaseBar((float)(CurrenMorale / StartingMorale) - difference);
+        Debug.Log(((float)CurrenMorale / StartingMorale) - difference);
+        Sprites.DecreaseBar(((float)CurrenMorale / StartingMorale) - difference);
         if (CurrenMorale <= 0)
         {
             CombatController.instance.EndCombat(false);

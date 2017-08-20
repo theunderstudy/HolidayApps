@@ -32,13 +32,13 @@ public class CombatController : MonoBehaviour
         PlayerCombat.Instance.SetStartingMorale(StartingMorale);
         EnemyStack[FightIndex].StartEnemyAttack();
         Debug.Log("Player attack cooldown is: " + attackTime);
-        PlayerCombat.Instance.PlayerStartCombat(attackTime);
+        PlayerCombat.Instance.PlayerStartCombat(attackTime, CurrentEnemy);
     }
     public void ProgressFight()
     {
         Debug.Log("next fight");
         float attackTime = PlayerCombat.Instance.BaseAttackSpeed - (PlayerCombat.Instance.Agility / 1000);
-        PlayerCombat.Instance.PlayerStartCombat(attackTime);
+        PlayerCombat.Instance.PlayerStartCombat(attackTime, CurrentEnemy);
 
     }
 
@@ -61,7 +61,8 @@ public class CombatController : MonoBehaviour
     {
         //move to the next enemy in the array
         EnemyStack[FightIndex].EndCombat();
-        FightIndex++;//increment
+        //probably just chill for now lol
+        //FightIndex++;//increment
 
         PlayerCombat.Instance.PlayerEndCombat();
         if (FightIndex == EnemyStack.Length)//out of enemies
