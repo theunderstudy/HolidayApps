@@ -15,7 +15,7 @@ public abstract class EnemyBaseClass : MonoBehaviour
 
     public GameObject DamageText;
 
-    protected DisplaySprite Sprites;
+    public DisplaySprite Sprites;
 
     public virtual void Start()
     {

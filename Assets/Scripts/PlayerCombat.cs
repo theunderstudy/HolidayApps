@@ -82,7 +82,7 @@ public class PlayerCombat : MonoBehaviour
         int damage = Random.Range(Strength - StrengthRange, Strength + StrengthRange);
         attackCrit(); //Check for crit
 
-        CombatController.instance.DealDamageToEnemy(damage);
+        CombatController.instance.DealDamageToEnemy(damage, false);
 
         Vector3 currentPosition = Dogo.transform.localPosition;
         currentPosition.x += 2;
@@ -121,8 +121,8 @@ public class PlayerCombat : MonoBehaviour
     }
     public int GetCritDamage()
     {
-        int critDamage = Strength + (Strength * (currentEnemy.knowledge / 3));
-        return critDamage;
+        float critDamage = (float)Strength + ((float)Strength * ((float)currentEnemy.knowledge / 3f));
+        return Mathf.RoundToInt(critDamage);
     }
 
     private void OnDestroy()

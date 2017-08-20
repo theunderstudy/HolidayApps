@@ -10,6 +10,7 @@ public class CombatController : MonoBehaviour
     public EnemyBaseClass[] EnemyStack;
     public int FightIndex = 0;
     public GameObject CombatText;
+    public int lastDamage = 0;
 
     private void Start()
     {
@@ -43,9 +44,14 @@ public class CombatController : MonoBehaviour
 
     }
 
-    public void DealDamageToEnemy(int damageToDeal)
+    public void DealDamageToEnemy(int damageToDeal, bool Crit)
     {
         EnemyStack[FightIndex].TakeDamage(damageToDeal);
+        lastDamage = damageToDeal;
+        enemyCombatText(EnemyStack[FightIndex]);
+
+        if (Crit)
+            lastDamage *= -1;
     }
 
     public void DealDamageToPlayer(int DamageToDeal)
@@ -80,9 +86,10 @@ public class CombatController : MonoBehaviour
     {
         //Run Critical Strike script
         GameObject CombatTextObject = Instantiate(CombatText);
-        Vector3 enemyLocation = enemy.transform.position;
+        CombatTextObject.transform.SetParent(enemy.Sprites.transform.GetChild(0));
+        Vector3 enemyLocation = enemy.Sprites.transform.GetChild(0).GetChild(1).localPosition;
         enemyLocation.z = 0;
-        CombatText.transform.position = enemyLocation;
+        CombatText.transform.localPosition = enemyLocation;
     }
 
 
@@ -96,7 +103,7 @@ public class CombatController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            enemyCombatText(CurrentEnemy);
+            enemyCombatText(EnemyStack[FightIndex]);
         }
     }
 

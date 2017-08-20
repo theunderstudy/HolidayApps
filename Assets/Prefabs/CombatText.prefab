@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224999769914979798}
   - component: {fileID: 222292074253194380}
   - component: {fileID: 114960527364614100}
+  - component: {fileID: 114892050832982742}
   m_Layer: 0
   m_Name: CombatText
   m_TagString: Untagged
@@ -28,6 +29,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114892050832982742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802483160839206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1e824ae3ecff54a862fdb665052f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDisplay: 0.5
+  speed: 0.05
 --- !u!114 &114960527364614100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,6 +96,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 1}
+  m_AnchoredPosition: {x: 3.7999983, y: 1.1600013}
   m_SizeDelta: {x: 176.51, y: 118.749}
   m_Pivot: {x: 0.5, y: 0.5}

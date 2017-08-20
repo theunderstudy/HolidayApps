@@ -93,6 +93,7 @@
     <Compile Include="Assets\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
     <Compile Include="Assets\Scripts\CombatController.cs" />
+    <Compile Include="Assets\Scripts\CombatText.cs" />
     <Compile Include="Assets\Scripts\CriticalAttack.cs" />
     <Compile Include="Assets\Scripts\DisplaySprite.cs" />
     <Compile Include="Assets\Scripts\EnemyBaseClass.cs" />

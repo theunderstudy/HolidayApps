@@ -19,6 +19,7 @@ public class CriticalAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        PlayerCombat.Instance.canCrit = false;
     }
     private void Update()
     {
@@ -54,7 +55,7 @@ public class CriticalAttack : MonoBehaviour {
             int critDamage = PlayerCombat.Instance.GetCritDamage();
 
             //Do the damage
-            CombatController.instance.DealDamageToEnemy(critDamage);
+            CombatController.instance.DealDamageToEnemy(critDamage, true);
 
             StopAllCoroutines();
             StartCoroutine(DestroyObject(false));
@@ -68,6 +69,7 @@ public class CriticalAttack : MonoBehaviour {
         }
         else
         {
+            transform.localScale = Vector3.one / 2;
             while (true)
             {
                 if (!rend)                
