@@ -328,7 +328,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114251068550383964
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.18
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114258572141605442
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.18
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114363548770200014
@@ -471,7 +471,7 @@ MonoBehaviour:
   AttackCoolDown: 1
   MoraleModifier: 0
   MaxHealth: 50
-  currentHealth: 9
+  currentHealth: 50
 --- !u!114 &114487641149614926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -546,7 +546,7 @@ MonoBehaviour:
   BaseAttackSpeed: 1.2
   Agility: 5
   StartingMorale: 50
-  CurrenMorale: -6
+  CurrenMorale: 50
   Dogo: {fileID: 1921317268332448}
 --- !u!114 &114724412409416370
 MonoBehaviour:
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114863683786949360

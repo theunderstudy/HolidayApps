@@ -90,6 +90,11 @@ public class PlayerCombat : MonoBehaviour
         Dogo.transform.localPosition = position;
     }
 
+    private void criticalAttack()
+    {
+
+    }
+
     private void OnDestroy()
     {
         PlayerPrefs.SetInt("str", Strength);
