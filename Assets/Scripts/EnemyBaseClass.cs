@@ -10,6 +10,7 @@ public abstract class EnemyBaseClass : MonoBehaviour
     public int MoraleModifier;
     public int MaxHealth;
     public int currentHealth;
+    public int knowledge = 1;
 
     protected DisplaySprite Sprites;
 
