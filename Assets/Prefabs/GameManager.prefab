@@ -77,7 +77,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1136250968922670}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3ff482e439e3324799ca377369a29dd, type: 3}
   m_Name: 
@@ -86,6 +86,8 @@ MonoBehaviour:
   EnemyStack:
   - {fileID: 0}
   FightIndex: 0
+  CombatText: {fileID: 1802483160839206, guid: c1bfe6062ceced643b66ac516e200025, type: 2}
+  lastDamage: 0
 --- !u!114 &114633447232868738
 MonoBehaviour:
   m_ObjectHideFlags: 1

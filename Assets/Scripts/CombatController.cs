@@ -5,25 +5,28 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     public static CombatController instance;
-
-    public EnemyBaseClass CurrentEnemy;
+    
     public EnemyBaseClass[] EnemyStack;
     public int FightIndex = 0;
     public GameObject CombatText;
     public int lastDamage = 0;
 
-    private void Start()
+    private IEnumerator Start()
     {
         if (!instance)
         {
             instance = this;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
 
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
+        yield return new WaitForSeconds(0.2f);
+        ResetFight();
+        StartFight();
+
     }
 
     public void StartFight()

@@ -100,6 +100,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GardenShed.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\MenuBackground.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\MenuDog.cs" />
     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\PlayerStatsUI.cs" />
     <Compile Include="Assets\Scripts\Rat.cs" />

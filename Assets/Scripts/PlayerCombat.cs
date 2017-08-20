@@ -24,25 +24,25 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
-        
+
         if (!Instance)
         {
             Instance = this;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(this);
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
+        //DontDestroyOnLoad(this);
         Sprites = GetComponent<DisplaySprite>();
-
+        PlayerPrefs.SetInt("Courage", Courage);
         if (PlayerPrefs.HasKey("str"))
         {
-            PlayerPrefs.DeleteAll();
-            //Strength = PlayerPrefs.GetInt("str");
-            //Agility = PlayerPrefs.GetFloat("agi");
-            //Cunning = PlayerPrefs.GetFloat("cunning");
-            //Courage = PlayerPrefs.GetInt("Courage");
+          
+            Strength = PlayerPrefs.GetInt("str");
+            Agility = PlayerPrefs.GetFloat("agi");
+            Cunning = PlayerPrefs.GetFloat("cunning");
+            Courage = PlayerPrefs.GetInt("Courage");
         }
     }
     public void PlayerStartCombat(float _time, EnemyBaseClass _currentEnemy)
@@ -53,6 +53,7 @@ public class PlayerCombat : MonoBehaviour
     public void PlayerEndCombat()
     {
         CancelInvoke();
+        GameManager.Instance.SwitchScene(2);
     }
     public void SetStartingMorale(int _Morale)
     {
@@ -84,18 +85,18 @@ public class PlayerCombat : MonoBehaviour
 
         CombatController.instance.DealDamageToEnemy(damage, false);
 
-        Vector3 currentPosition = Dogo.transform.localPosition;
-        currentPosition.x += 2;
+        Vector3 vecone = Vector3.zero;
+        vecone.x = 1;
 
-        StartCoroutine(MoveBack(Dogo.transform.localPosition));
+        //StartCoroutine(MoveBack(Dogo.transform.localPosition));
 
-        Dogo.transform.DOLocalMove(currentPosition, 0.15f);
+        Dogo.transform.DOPunchPosition(vecone, 0.15f)   ;
     }
-    IEnumerator MoveBack(Vector3 position)
-    {
-        yield return new WaitForSeconds(0.15f);
-        Dogo.transform.localPosition = position;
-    }
+   // IEnumerator MoveBack(Vector3 position)
+   //{
+   //     yield return new WaitForSeconds(0.15f);
+   //     Dogo.transform.localPosition = position;
+   // }
 
     private void attackCrit()
     {
@@ -112,13 +113,6 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            attackCrit();
-        }
-    }
     public int GetCritDamage()
     {
         float critDamage = (float)Strength + ((float)Strength * ((float)currentEnemy.knowledge / 3f));
@@ -130,7 +124,7 @@ public class PlayerCombat : MonoBehaviour
         PlayerPrefs.SetInt("str", Strength);
         PlayerPrefs.SetFloat("agi", Agility);
         PlayerPrefs.SetFloat("cunning", Cunning);
-        PlayerPrefs.SetInt("courage", Courage);
+        PlayerPrefs.SetInt("Courage", Courage);
     }
 }
 
