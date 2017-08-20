@@ -10,11 +10,6 @@ public class GardenShed : MonoBehaviour,IPointerClickHandler {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void OnPointerClick(PointerEventData eventData) // 3
     {
         GameManager.Instance.SwitchGardens();

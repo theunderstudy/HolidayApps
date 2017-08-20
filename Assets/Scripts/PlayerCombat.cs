@@ -13,15 +13,18 @@ public class PlayerCombat : MonoBehaviour
     public float Agility = 5;// attack speed modifier + dodge chance
     public int StartingMorale;//current HP based on courage
     public int CurrenMorale;
+    public bool canCrit = true;
 
     public static PlayerCombat Instance;
     private DisplaySprite Sprites;
 
     public GameObject Dogo;
     private EnemyBaseClass currentEnemy;
+    public GameObject Crit;
 
     void Start()
     {
+        
         if (!Instance)
         {
             Instance = this;
@@ -67,7 +70,7 @@ public class PlayerCombat : MonoBehaviour
         CurrenMorale -= _damage;
         float difference = 1 - ((float)StartingMorale / Courage);
 
-        Debug.Log(((float)CurrenMorale / StartingMorale) - difference);
+
         Sprites.DecreaseBar(((float)CurrenMorale / StartingMorale) - difference);
         if (CurrenMorale <= 0)
         {
@@ -101,7 +104,24 @@ public class PlayerCombat : MonoBehaviour
         if (randValue < (1f - critChance))
         {
             //Run Critical Strike script
+            GameObject critObject = Instantiate(Crit);
+            Vector3 enemyLocation = currentEnemy.transform.position;
+            enemyLocation.z = 0;
+            critObject.transform.position = enemyLocation;
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            attackCrit();
+        }
+    }
+    public int GetCritDamage()
+    {
+        int critDamage = Strength + (Strength * (currentEnemy.knowledge / 3));
+        return critDamage;
     }
 
     private void OnDestroy()

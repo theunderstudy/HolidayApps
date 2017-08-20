@@ -32,13 +32,13 @@ public class CombatController : MonoBehaviour
         PlayerCombat.Instance.SetStartingMorale(StartingMorale);
         EnemyStack[FightIndex].StartEnemyAttack();
         Debug.Log("Player attack cooldown is: " + attackTime);
-        PlayerCombat.Instance.PlayerStartCombat(attackTime, CurrentEnemy);
+        PlayerCombat.Instance.PlayerStartCombat(attackTime, EnemyStack[FightIndex]);
     }
     public void ProgressFight()
     {
         Debug.Log("next fight");
         float attackTime = PlayerCombat.Instance.BaseAttackSpeed - (PlayerCombat.Instance.Agility / 1000);
-        PlayerCombat.Instance.PlayerStartCombat(attackTime, CurrentEnemy);
+        PlayerCombat.Instance.PlayerStartCombat(attackTime, EnemyStack[FightIndex]);
 
     }
 
