@@ -5,21 +5,22 @@ using DG.Tweening;
 [RequireComponent(typeof(DisplaySprite))]
 public class PlayerCombat : MonoBehaviour
 {
-    public float Cunning=5;//crit % chance based on enemy knowledge :: (Cunning/2)*(Knowledge/2)+10
-    public int Courage=50;//total health at the start of a fight
+    public float Cunning = 5;//crit % chance based on enemy knowledge :: (Cunning/2)*(Knowledge/2)+10
+    public int Courage = 50;//total health at the start of a fight
     public int Strength = 15;//attack damage
     public int StrengthRange = 2;
-    public float BaseAttackSpeed=1f;
-    public float Agility=5;// attack speed modifier + dodge chance
+    public float BaseAttackSpeed = 1f;
+    public float Agility = 5;// attack speed modifier + dodge chance
     public int StartingMorale;//current HP based on courage
     public int CurrenMorale;
-    
+
     public static PlayerCombat Instance;
     private DisplaySprite Sprites;
 
     public GameObject Dogo;
+    private EnemyBaseClass currentEnemy;
 
-	void Start ()
+    void Start()
     {
         if (!Instance)
         {
@@ -39,9 +40,10 @@ public class PlayerCombat : MonoBehaviour
             Cunning = PlayerPrefs.GetFloat("cunning");
             Courage = PlayerPrefs.GetInt("Courage");
         }
-	}
-    public void PlayerStartCombat(float _time)
+    }
+    public void PlayerStartCombat(float _time, EnemyBaseClass _currentEnemy)
     {
+        currentEnemy = _currentEnemy;
         InvokeRepeating("PlayerAttackSequence", _time, _time);
     }
     public void PlayerEndCombat()
@@ -55,18 +57,18 @@ public class PlayerCombat : MonoBehaviour
         CurrenMorale = StartingMorale;
 
         // startingMorale / courage should give me the % that starting morale is of the max
-        float difference =  1-(StartingMorale / Courage);
+        float difference = 1 - (StartingMorale / Courage);
         Debug.Log(difference);
-        Sprites.DecreaseBar(((float)CurrenMorale / (float)StartingMorale)-difference);
+        Sprites.DecreaseBar(((float)CurrenMorale / (float)StartingMorale) - difference);
     }
     public void takeDamage(int _damage)
     {
         CurrenMorale -= _damage;
-        float difference = 1- (StartingMorale / Courage);
-        
+        float difference = 1 - (StartingMorale / Courage);
+
         Debug.Log((CurrenMorale / StartingMorale) - difference);
-        Sprites.DecreaseBar((float)(CurrenMorale / StartingMorale)-difference);
-        if (CurrenMorale <=0 )
+        Sprites.DecreaseBar((float)(CurrenMorale / StartingMorale) - difference);
+        if (CurrenMorale <= 0)
         {
             CombatController.instance.EndCombat(false);
         }
@@ -74,7 +76,7 @@ public class PlayerCombat : MonoBehaviour
     private void PlayerAttackSequence()
     {
         int damage = Random.Range(Strength - StrengthRange, Strength + StrengthRange);
-       
+
         CombatController.instance.DealDamageToEnemy(damage);
 
         Vector3 currentPosition = Dogo.transform.localPosition;
@@ -90,9 +92,15 @@ public class PlayerCombat : MonoBehaviour
         Dogo.transform.localPosition = position;
     }
 
-    private void criticalAttack()
+    private void attackCrit()
     {
+        float critChance = ((Cunning / 2) * (currentEnemy.knowledge / 2) + 10)/100;
+        float randValue = Random.value;
 
+        if (randValue < (1f - critChance))
+        {
+            //Run Critical Strike script
+        }
     }
 
     private void OnDestroy()
@@ -103,3 +111,4 @@ public class PlayerCombat : MonoBehaviour
         PlayerPrefs.SetInt("courage", Courage);
     }
 }
+
