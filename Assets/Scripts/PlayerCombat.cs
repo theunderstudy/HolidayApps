@@ -34,10 +34,10 @@ public class PlayerCombat : MonoBehaviour
 
         if (PlayerPrefs.HasKey("str"))
         {
-            Strength = PlayerPrefs.GetInt("str");
-            Agility = PlayerPrefs.GetFloat("agi");
-            Cunning = PlayerPrefs.GetFloat("cunning");
-            Courage = PlayerPrefs.GetInt("Courage");
+            //Strength = PlayerPrefs.GetInt("str");
+            //Agility = PlayerPrefs.GetFloat("agi");
+            //Cunning = PlayerPrefs.GetFloat("cunning");
+            //Courage = PlayerPrefs.GetInt("Courage");
         }
 	}
     public void PlayerStartCombat(float _time)
@@ -64,8 +64,8 @@ public class PlayerCombat : MonoBehaviour
         CurrenMorale -= _damage;
         float difference = 1- (StartingMorale / Courage);
         
-        Debug.Log((CurrenMorale / StartingMorale) - difference);
-        Sprites.DecreaseBar((float)(CurrenMorale / StartingMorale)-difference);
+        Debug.Log(((float)CurrenMorale / StartingMorale) - difference);
+        Sprites.DecreaseBar(((float)CurrenMorale / StartingMorale)-difference);
         if (CurrenMorale <=0 )
         {
             CombatController.instance.EndCombat(false);
