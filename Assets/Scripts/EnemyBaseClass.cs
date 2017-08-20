@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 [RequireComponent(typeof(DisplaySprite))]
 public abstract class EnemyBaseClass : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public abstract class EnemyBaseClass : MonoBehaviour
     public int MaxHealth;
     public int currentHealth;
     public int knowledge = 1;
+
+    public GameObject DamageText;
 
     protected DisplaySprite Sprites;
 
@@ -42,6 +45,11 @@ public abstract class EnemyBaseClass : MonoBehaviour
         {
             CombatController.instance.EndCombat(true);
         }
+
+        //Give feedback to hit
+        Vector3 temp = Vector3.zero;
+        temp.x = 0.1f;
+        transform.DOPunchPosition(temp, 0.5f, 10, 10);
     }
    public void ResetHP()
     {

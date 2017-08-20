@@ -9,6 +9,7 @@ public class CombatController : MonoBehaviour
     public EnemyBaseClass CurrentEnemy;
     public EnemyBaseClass[] EnemyStack;
     public int FightIndex = 0;
+    public GameObject CombatText;
 
     private void Start()
     {
@@ -75,6 +76,14 @@ public class CombatController : MonoBehaviour
         }
     }
 
+    public void enemyCombatText(EnemyBaseClass enemy)
+    {
+        //Run Critical Strike script
+        GameObject CombatTextObject = Instantiate(CombatText);
+        Vector3 enemyLocation = enemy.transform.position;
+        enemyLocation.z = 0;
+        CombatText.transform.position = enemyLocation;
+    }
 
 
     private void Update()
@@ -83,6 +92,11 @@ public class CombatController : MonoBehaviour
         {
             ResetFight();
             StartFight();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            enemyCombatText(CurrentEnemy);
         }
     }
 

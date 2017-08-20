@@ -80,6 +80,7 @@ public class PlayerCombat : MonoBehaviour
     private void PlayerAttackSequence()
     {
         int damage = Random.Range(Strength - StrengthRange, Strength + StrengthRange);
+        attackCrit(); //Check for crit
 
         CombatController.instance.DealDamageToEnemy(damage);
 
@@ -98,10 +99,10 @@ public class PlayerCombat : MonoBehaviour
 
     private void attackCrit()
     {
-        float critChance = ((Cunning / 2) * (currentEnemy.knowledge / 2) + 10)/100;
+        float critChance = ((Cunning / 2f) * (currentEnemy.knowledge / 2f) + 10f)/100f;
         float randValue = Random.value;
 
-        if (randValue < (1f - critChance))
+        if (randValue < (critChance))
         {
             //Run Critical Strike script
             GameObject critObject = Instantiate(Crit);

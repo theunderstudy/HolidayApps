@@ -31,11 +31,13 @@ public class CriticalAttack : MonoBehaviour {
                     rend = GetComponent<SpriteRenderer>();
 
                 SpriteIndex++;
-                if (SpriteIndex == CritSprites.Length)
+                if (SpriteIndex >= CritSprites.Length)
                 {
                     StartCoroutine(DestroyObject(true));
+                } else
+                {
+                    rend.sprite = CritSprites[SpriteIndex];
                 }
-                rend.sprite = CritSprites[SpriteIndex];
             }
             else
             {
